@@ -1,0 +1,95 @@
+# Variable 'S3BucketName' was defined in the Variables tab
+# Variable 'RegionName' was defined in the Variables tab
+variables:
+- name: BuildParameters.RestoreBuildProjects
+  value: '**/*.csproj'
+- name: BuildParameters.TestProjects
+  value: '**/*[Tt]ests/*.csproj'
+- name: S3BucketName
+- name:  RegionName
+name: $(date:yyyyMMdd)$(rev:.r)
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/newaccount
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    vmImage: ubuntu-20.04
+  steps:
+  - checkout: self
+  - task: TerraformInstaller@0
+    displayName: Install Terraform latest
+  - task: Bash@3
+    displayName: Terraform Init
+    inputs:
+      targetType: inline
+      script: "# Write your commands here\n\nterraform init -backend-config=  $(S3BucketName) -backend-config=\"internaldevops/appstreamurl/terraform.tfstate\" "
+  - task: Bash@3
+    displayName: Terraform Plan
+    inputs:
+      targetType: inline
+      script: >-
+        # Write your commands here
+
+        terraform plan -var "region=$(RegionName)" --out "plan.out"
+  - task: Bash@3
+    displayName: Terraform Apply
+    inputs:
+      targetType: inline
+      script: >
+        # Write your commands here
+
+
+        terraform apply "plan.out"
+  - task: Bash@3
+    displayName: Python Script
+    inputs:
+      targetType: inline
+      script: >
+        # Write your commands here
+
+
+        sudo apt-get install python3.x
+
+        python appsettings-script.py
+      workingDirectory: appsettings-script.py
+  - task: DotNetCoreCLI@2
+    displayName: Restore
+    inputs:
+      command: restore
+      projects: $(BuildParameters.RestoreBuildProjects)
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      projects: $(BuildParameters.RestoreBuildProjects)
+      arguments: --configuration $(BuildConfiguration)
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: test
+      projects: $(BuildParameters.TestProjects)
+      arguments: --configuration $(BuildConfiguration)
+  - task: DotNetCoreCLI@2
+    displayName: Publish
+    inputs:
+      command: publish
+      publishWebProjects: True
+      projects: $(BuildParameters.RestoreBuildProjects)
+      arguments: --configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)
+      zipAfterPublish: True
+  - task: AWSShellScript@1
+    displayName: AWS Shell Script
+    inputs:
+      awsCredentials: 931e2e64-be14-46b3-aa68-f568af2f30dc
+      regionName: us-east-1
+      scriptType: inline
+      inlineScript: >
+        # You can write your script inline here
+
+        dotnet tool install -g Amazon.Lambda.Tools
+        dotnet lambda deploy-serverless --framework netcoreapp3.1 --stack-name APSSAMCognito-test-Pipeline --s3-bucket $(S3BucketName) --s3-perfix APSSAMCognito-test-abhay-$(RegionName) --template serverless.template --region $(RegionName)
+
+...

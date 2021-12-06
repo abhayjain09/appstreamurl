@@ -1,0 +1,33 @@
+parameters:
+- name: terraformVersion
+  type: string
+- name: backendConfig
+  type: string
+- name: workingDirectory
+  type: string
+- name: artifactName
+  type: string
+  default: n/a
+- name: applyParams
+  type: string
+
+steps:
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+  displayName: Install Terraform ${{ parameters.terraformVersion }}
+  inputs:
+    terraformVersion: ${{ parameters.terraformVersion }}
+
+- bash: |
+    terraform init ${{ parameters.backendConfig }}
+  workingDirectory: ${{ parameters.workingDirectory }}
+  displayName: Terraform Init
+
+- download: current
+  artifact: ${{ parameters.artifactName }}
+  displayName: Download artifact ${{ parameters.artifactName }}
+  condition: and(succeeded(), ne('${{ parameters.artifactName }}', 'n/a'))
+
+- bash: |
+    terraform apply ${{ parameters.applyParams }}
+  workingDirectory: ${{ parameters.workingDirectory }}
+  displayName: Terraform Apply

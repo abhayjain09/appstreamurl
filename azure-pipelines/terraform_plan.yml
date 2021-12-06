@@ -1,0 +1,25 @@
+parameters:
+- name: terraformVersion
+  type: string
+- name: backendConfig
+  type: string
+- name: workingDirectory
+  type: string
+- name: planParams
+  type: string
+
+steps:
+- task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+  displayName: Install Terraform ${{ parameters.terraformVersion }}
+  inputs:
+    terraformVersion: ${{ parameters.terraformVersion }}
+
+- bash: |
+    terraform init ${{ parameters.backendConfig }}
+  workingDirectory: ${{ parameters.workingDirectory }}
+  displayName: Terraform Init
+
+- bash: |
+    terraform plan ${{ parameters.planParams }}
+  workingDirectory: ${{ parameters.workingDirectory }}
+  displayName: Terraform Plan

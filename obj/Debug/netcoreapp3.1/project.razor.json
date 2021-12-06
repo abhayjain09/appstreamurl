@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\APSSAMCognito.Web.csproj",
+  "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\APSSAMCognito.Web.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14402,43 +14402,43 @@
   "RootNamespace": "APSSAMCognito.Web",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\Callback.cshtml",
-      "TargetPath": "Pages\\Callback.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\_ViewStart.cshtml",
-      "TargetPath": "Pages\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\Index.cshtml",
-      "TargetPath": "Pages\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\Help.cshtml",
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\Help.cshtml",
       "TargetPath": "Pages\\Help.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\_Layout.cshtml",
       "TargetPath": "Pages\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\web\\APSSAMCognito\\APSSAMCognito.Web\\Pages\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Pages\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\Callback.cshtml",
+      "TargetPath": "Pages\\Callback.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\abhay.lunkad\\Desktop\\cognito-test\\Pages\\Index.cshtml",
+      "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],
